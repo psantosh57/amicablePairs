@@ -7,22 +7,22 @@
 
 static bool verbose = true;
 
-class amicPr {
+class amicable {
 
 public:
 
-	amicPr(int limit) : _array (limit), _limit(limit), _display(verbose) {
+	amicable(int limit) : _array(limit), _a{ 2,3,5,7 }, _limit(limit), _count(0) {
 
 		if (_display) {
 
 			cout << "In amicPr const" << endl;
 		}
 
-		init();
+		//init();
 
 	}
 
-	amicPr() {
+	amicable() {
 
 		if (_display) {
 
@@ -32,12 +32,15 @@ public:
 	
 	void calcPairs(int n);
 	void init();
+	void populateArray(int n);
 
 private :
 
-	darray <int> _array;
+	darray <darray<int>> _array;
+	int _a[4];
 	int _limit;
-	bool _display;
+	static bool _display;
+	int _count;
 
 };
 
