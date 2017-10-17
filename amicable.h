@@ -33,6 +33,11 @@ public:
 	void calcPairs(int n);
 	void init();
 	void populateArray(int n);
+	void displayArray(int row, int col);
+	void calcFactors(int n);
+	bool ifPresent(int index, int limit, int n);
+
+
 
 private :
 

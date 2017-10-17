@@ -42,7 +42,34 @@ int main() {
 #endif // 0
 
 	amicable ami(2);
-	ami.populateArray(48);
+	for (int i = 1; i < 25; i++) {
+
+		ami.populateArray(i);
+
+	}
+	
+	ami.displayArray(23, 0);
+	ami.displayArray(23, 1);
+	ami.displayArray(23, 2);
+	ami.displayArray(23, 3);
+	ami.displayArray(23, 4);
+	ami.displayArray(23, 5);
+	ami.displayArray(23, 6);
+
+	ami.displayArray(23, 7);
+#if 0
+	ami.displayArray(23, 8);
+	ami.displayArray(23, 9);
+	ami.displayArray(23, 10);
+	ami.displayArray(23, 11);
+	ami.displayArray(23, 12);
+#endif // 0
+
+
+
+
+
+
 
   return 0 ;
 }
