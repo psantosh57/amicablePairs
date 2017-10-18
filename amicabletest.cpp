@@ -47,16 +47,18 @@ int main() {
 		//cout << "Working for " << i << endl;
 
 		ami.populateArray(i);
-		int temp = ami.addFactors(i);
-		if (temp < i) {
+		//int temp = ami.addFactors(i);
+		//if (temp < i) {
 
 			ami.verifySums(i);
-		}
+		//}
 
 
 
 	}
 #endif // 0
+
+	//darray<darray<int>> a(1);
 
 	return 0 ;
 }
