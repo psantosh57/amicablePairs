@@ -33,7 +33,7 @@ compute factor and resuse computed factors.
 int main() {
 #if 0
 	clock_t start = clock();
-	unsigned int n = 100000000;
+	unsigned int n = 10000000;
 	amicable a(n);
 	clock_t end = clock();
 	double d = double(end - start) / CLOCKS_PER_SEC;
@@ -41,14 +41,10 @@ int main() {
 	cout << "I will fail if you take more than 45 sec\n";
 #endif // 0
 
-	amicable ami(1211);
-	for (int i = 2; i < 1211; i++) {
-		cout << "Working for " << i << endl;
-
-		if (i == 1210) {
-
-			cout << "Work here" << endl;
-		}
+	amicable ami(10000000);
+#if 1
+	for (int i = 2; i < 10000000; i++) {
+		//cout << "Working for " << i << endl;
 
 		ami.populateArray(i);
 		int temp = ami.addFactors(i);
@@ -60,37 +56,9 @@ int main() {
 
 
 	}
-	
-#if 0
-	ami.displayArray(23, 0);
-	ami.displayArray(23, 1);
-	ami.displayArray(23, 2);
-	ami.displayArray(23, 3);
-	ami.displayArray(23, 4);
-	ami.displayArray(23, 5);
-	ami.displayArray(23, 6);
-
-	ami.displayArray(23, 7);
-
-	//ami.addAndVerify(24);
-	ami.verifySums(12);
 #endif // 0
 
-#if 0
-	ami.displayArray(23, 8);
-	ami.displayArray(23, 9);
-	ami.displayArray(23, 10);
-	ami.displayArray(23, 11);
-	ami.displayArray(23, 12);
-#endif // 0
-
-
-
-
-
-
-
-  return 0 ;
+	return 0 ;
 }
 
 //EOF

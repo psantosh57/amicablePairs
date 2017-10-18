@@ -11,14 +11,12 @@ class amicable {
 
 public:
 
-	amicable(int limit) : _array(limit), _a{ 2,3,5,7,11}, _limit(limit), _count(0) {
+	amicable(int limit) : _array(limit), _limit(limit), _count(0) {
 
 		if (_display) {
 
 			cout << "In amicPr const" << endl;
 		}
-
-		//init();
 
 	}
 
@@ -30,11 +28,8 @@ public:
 		}
 	}
 	
-	void calcPairs(int n);
-	void init();
 	void populateArray(int n);
 	void displayArray(int row, int col);
-	//void calcFactors(int n);
 	bool ifPresent(int index, int limit, int n);
 	int addFactors(int n);
 	void verifySums(int n);
@@ -44,7 +39,7 @@ public:
 private :
 
 	darray <darray<int>> _array;
-	int _a[5];
+	//int _a[5];
 	int _limit;
 	static bool _display;
 	int _count;
