@@ -41,13 +41,27 @@ int main() {
 	cout << "I will fail if you take more than 45 sec\n";
 #endif // 0
 
-	amicable ami(2);
-	for (int i = 1; i < 25; i++) {
+	amicable ami(1211);
+	for (int i = 2; i < 1211; i++) {
+		cout << "Working for " << i << endl;
+
+		if (i == 1210) {
+
+			cout << "Work here" << endl;
+		}
 
 		ami.populateArray(i);
+		int temp = ami.addFactors(i);
+		if (temp < i) {
+
+			ami.verifySums(i);
+		}
+
+
 
 	}
 	
+#if 0
 	ami.displayArray(23, 0);
 	ami.displayArray(23, 1);
 	ami.displayArray(23, 2);
@@ -57,6 +71,11 @@ int main() {
 	ami.displayArray(23, 6);
 
 	ami.displayArray(23, 7);
+
+	//ami.addAndVerify(24);
+	ami.verifySums(12);
+#endif // 0
+
 #if 0
 	ami.displayArray(23, 8);
 	ami.displayArray(23, 9);

@@ -88,7 +88,7 @@ void amicable::populateArray(int n) {
 
 	if (n == 1) {
 
-		_array[n - 1][1] = 0;
+		_array[n - 1][0] = 0;
 
 	}
 
@@ -107,6 +107,9 @@ void amicable::populateArray(int n) {
 			int k = 0;
 			
 			m /= _a[i];
+
+			_array[n - 1][j++] = _array[m - 1][k];
+
 			if (_array[m - 1][k + 1] != 0) {
 				
 				k++;
@@ -134,31 +137,14 @@ void amicable::populateArray(int n) {
 				break;
 
 			}
+#if 0
 			else {
 
 				_array[n - 1][j++] = _array[m - 1][k++];
 				break;
 			}
-
-			
-
-#if 0
-			while (p % _a[i] == 0 && p != 1) {
-
-
-				p /= 2;
-
-				//Add code to reuse factors
-
-
-
-
-
-			}
 #endif // 0
 
-			//m = p;
-			//m = m / _a[i];
 
 		}
 
@@ -168,8 +154,6 @@ void amicable::populateArray(int n) {
 	
 	_array[n - 1][j++] = 0;
 
-	//cout << _array[n - 1][0] << endl;
-	
 }
 
 	
@@ -238,6 +222,7 @@ void amicable::displayArray(int row, int col) {
 
 }
 
+#if 0
 void amicable::calcFactors(int n) {
 
 	darray<int> sum;
@@ -258,6 +243,8 @@ void amicable::calcFactors(int n) {
 
 }
 
+#endif // 0
+
 bool amicable::ifPresent(int index, int limit, int n) {
 
 	for (int i = 0; i < limit; i++) {
@@ -269,5 +256,51 @@ bool amicable::ifPresent(int index, int limit, int n) {
 	}
 
 	return false;
+
+}
+
+
+int amicable::addFactors(int n) {
+
+	if (n == 1) {
+
+		return 1;
+	}
+	else {
+		
+		int sum = 1;
+		int i = 1;
+
+		while (_array[n - 1][i] != 0) {
+
+			sum += _array[n - 1][i];
+			i++;
+		}
+
+		//cout << "Sum of factors of " << n << " = " << sum << endl;
+
+
+		return sum;
+
+	}
+
+	
+}
+
+void amicable::verifySums(int n) {
+
+	int s1 = addFactors(n);
+	//cout << "Sum of " << n << " is " << s1 << endl;
+	int s2 = addFactors(s1);
+	//cout << "Sum of " << s1 << " is " << s2 << endl;
+
+	if (s2 == n) {
+
+		cout << s2 << " and " << n << " are amicable pairs!" << endl;
+	}
+	else {
+
+		//cout << "Not amicable pairs" << endl;
+	}
 
 }
