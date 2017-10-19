@@ -50,7 +50,7 @@ int main() {
 		//int temp = ami.addFactors(i);
 		//if (temp < i) {
 
-			ami.verifySums(i);
+			//ami.verifySums(i);
 		//}
 
 
@@ -59,6 +59,8 @@ int main() {
 #endif // 0
 
 	//darray<darray<int>> a(1);
+	//int i = 25;
+	//cout << sqrt(i) << endl;
 
 	return 0 ;
 }

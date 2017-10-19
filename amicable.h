@@ -11,12 +11,14 @@ class amicable {
 
 public:
 
-	amicable(int limit) : _array(limit), _limit(limit), _count(0) {
+	amicable(int limit) : _array(limit), _sumArray(0), _limit(limit), _count(0) {
 
 		if (_display) {
 
 			cout << "In amicPr const" << endl;
 		}
+
+		_sumArray = new int[limit];
 
 	}
 
@@ -39,6 +41,7 @@ public:
 private :
 
 	darray <darray<int>> _array;
+	int* _sumArray;
 	//int _a[5];
 	int _limit;
 	static bool _display;

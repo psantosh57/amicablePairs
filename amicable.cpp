@@ -6,10 +6,12 @@ void amicable::populateArray(int n) {
 	int j = 1;
 	int i = 0;
 	int fact = 2;
+	int sum = 1;
 	//int mod = m % _a[i];
 	int mod = m % fact;
 	int div = m;
 	int count = 4;
+	bool divBy2 = false;
 	_array[n - 1][0] = m;
 
 	if (n == 1) {
@@ -20,7 +22,7 @@ void amicable::populateArray(int n) {
 
 	//cout << "Number is " << n << endl;
 
-	while (fact <= n/2 && div > fact) {
+	while (fact <= sqrt(n) || div > fact) {
 
 		//mod = m % _a[i];
 		//div = m / _a[i];
@@ -32,19 +34,19 @@ void amicable::populateArray(int n) {
 			//_array[n - 1][j++] = _a[i];
 			//cout << "Factor is " << fact << endl;
 			_array[n - 1][j++] = fact;
-
-
-			//p = m;
+			sum += fact;
+			
 			int k = 0;
 			
-			//m /= _a[i];
 			m /= fact;
 
 			int temp = _array[m - 1][k];
-			
-			if (!ifPresent((n - 1), j, temp)) {
-				//cout << "Factor is " << _array[m - 1][k] << endl;
-				_array[n - 1][j++] = _array[m - 1][k];
+
+			//Dont add factor again - eg 121 = 11*11
+			if (m != fact) {
+				
+				_array[n - 1][j++] = temp;
+				sum += temp;
 
 			}
 
@@ -59,6 +61,7 @@ void amicable::populateArray(int n) {
 					if (!ifPresent((n - 1), j, temp)) {
 						//cout << "Factor is " << temp << endl;
 						_array[n - 1][j++] = _array[m - 1][k];
+						sum += temp;
 					
 					}
 					
@@ -68,6 +71,7 @@ void amicable::populateArray(int n) {
 					if (!ifPresent((n - 1), j, temp)) {
 						//cout << "Factor is " << temp << endl;
 						_array[n - 1][j++] = temp;
+						sum += temp;
 
 					}
 						
@@ -80,9 +84,21 @@ void amicable::populateArray(int n) {
 		}
 
 		fact++;
+
 	}
 	
 	_array[n - 1][j++] = 0;
+
+	_sumArray[n - 1] = sum;
+
+	if (((n - 1) > sum) && (_sumArray[sum - 1] == n)) {
+
+		cout << _count << ": " << sum << " and " << n << " are amicable pairs!" << endl;
+		_count++;
+
+	}
+
+	
 
 }
 
