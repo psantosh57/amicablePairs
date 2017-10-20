@@ -18,7 +18,7 @@ public:
 			cout << "In amicPr const" << endl;
 		}
 
-		//_sumArray = new int[_limit];
+		_sumArray = new int[_limit];
 		_tempArray = new bool [_limit];
 
 		calcPrimes();
@@ -43,6 +43,7 @@ public:
 	
 	void populateArray(int n);
 	int populateArray1(int n);
+	void generateFactors(int n);
 	void displayArray(int row, int col);
 	bool ifPresent(int index, int limit, int n);
 	int addFactors(int n);

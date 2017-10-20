@@ -40,18 +40,14 @@ int main() {
 	cout << "Run time for amicable for n = " << n << " is " << d << " secs" << endl;
 	cout << "I will fail if you take more than 45 sec\n";
 #endif // 0
+
+#if 0
 	clock_t start = clock();
-	amicable ami(10000000);
+	amicable ami(7);
 	int count = 0;
-#if 1
+
 	for (int i = 2; i < 10000000; i++) {
 		//cout << "Working for " << i << endl;
-#if 0
-		if (i == 220) {
-
-			cout << "Wait here" << endl;
-		}
-#endif // 0
 
 		int sum = ami.populateArray1(i);
 
@@ -87,6 +83,20 @@ int main() {
 	cout << "Run time for amicable for n = " << 10000000 << " is " << d << " secs" << endl;
 
 #endif // 0
+	int n = 10000000;
+	amicable ami(n);
+	for (int i = 2; i < 10000000; i++) {
+		//cout << i << endl;
+		if (i == 284) {
+
+			cout << "Wait" << endl;
+
+		}
+		
+		ami.generateFactors(i);
+	}
+	
+
 
 	//darray<darray<int>> a(1);
 	//int i = 25;
@@ -96,4 +106,3 @@ int main() {
 }
 
 //EOF
-

@@ -110,6 +110,8 @@ void amicable::populateArray(int n) {
 
 int amicable::populateArray1(int n) {
 
+	_array[n - 1][0] = n;
+
 	if (n % 6 != 0 && !_tempArray[n]) {
 		
 		int m = n;
@@ -127,7 +129,7 @@ int amicable::populateArray1(int n) {
 		int product = 1;
 		//int count = 0; 
 
-		_array[n - 1][0] = m;
+		
 
 #if 0
 		if (n == 1) {
@@ -137,11 +139,14 @@ int amicable::populateArray1(int n) {
 		}
 #endif // 0
 
+#if 0
 		if (_tempArray[n]) {
 
 			_array[n - 1][j] = 1;
 
 		}
+#endif // 0
+
 
 
 		while (fact <= sqrt(m)) {
@@ -150,8 +155,46 @@ int amicable::populateArray1(int n) {
 			//div = m / _primeArray[primeInd];
 			mod = m % fact;
 			div = m / fact;
-
+			int factInd = 1;
 			if (mod == 0) {
+
+				_array[n - 1][j++] = fact;
+				if (_array[fact][factInd] == 0) {
+
+					_array[n - 1][j++] = 1;
+				}
+				else if (div % fact == 0) {
+					factInd++;
+					_array[n - 1][j++] = _array[fact][factInd] + 1;
+
+				}
+
+
+
+
+#if 0
+			else if (_tempArray[div]) {
+
+				_array[m][fact] = 1;
+				_array[m][div] = div;
+				break;
+
+			}
+#endif // 0
+
+
+				m = div;
+				fact++;
+
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				int count = 0;
 				while (mod == 0 && m != 1) {
 
@@ -196,6 +239,8 @@ int amicable::populateArray1(int n) {
 
 	}
 	else {
+
+		_array[n - 1][1] = 0;
 
 		(n + 1);
 
@@ -352,3 +397,152 @@ void amicable::fillPrimeArray() {
 
 }
 #endif // 0
+
+
+void amicable::generateFactors(int n) {
+
+	_array[n - 1][0] = n;
+	int j = 1;
+	int tempSum = 1;
+	int product = 1;
+
+	if (!_tempArray[n]) {
+	
+		int fact = 2;
+		//int j = 1;
+		int m = n;
+		int mod = m % fact;
+		int div = m / fact;
+
+		while (fact <= sqrt(m)) {
+
+			//mod = m % _primeArray[primeInd];
+			//div = m / _primeArray[primeInd];
+			mod = m % fact;
+			div = m / fact;
+			int factInd = 1;
+			if (mod == 0 && div != 1) {
+
+				_array[n - 1][j++] = fact;
+				//_array[n - 1][j++] = 1;
+				if (div == fact) {
+
+					_array[n - 1][j++] = 2;
+					//tempSum += pow(fact, 2);
+					break;
+
+				}
+				else if (div % fact == 0) {
+					factInd++;
+					while (_array[div-1][factInd] != 0) {
+
+						if (j == 2 && factInd == 2) {
+
+							_array[n - 1][j++] = _array[div-1][factInd++] + 1;
+
+						}
+						else {
+
+							_array[n - 1][j++] = _array[div - 1][factInd++];
+
+						}
+						
+						
+
+					}
+
+					break;
+					//factInd++;
+					//_array[n - 1][j++] = _array[fact][factInd] + 1;
+
+				}
+				else if (_array[div-1][factInd] == 1) {
+					_array[n - 1][j++] = 1;
+					factInd--;
+					while (_array[div - 1][factInd] != 0) {
+
+						_array[n - 1][j++] = _array[div - 1][factInd++];
+
+					}
+					
+					break;
+				}
+				else {
+					_array[n - 1][j++] = 1;
+					while (_array[div - 1][factInd] != 0) {
+
+						_array[n - 1][j++] = _array[div - 1][factInd++];
+
+					}
+
+					break;
+
+				}
+
+				m = div;
+
+			}
+
+			
+			fact++;			
+
+		}
+	
+	
+	}
+	else {
+
+		_array[n - 1][j++] = 1;
+		//_array[n - 1][j] = 0;
+
+		//(n + 1);
+
+	}
+
+	_array[n - 1][j] = 0;
+
+	if (_array[n - 1][1] != 1) {
+
+		int k = 1;
+		int base = _array[n - 1][k];
+		while (base != 0) {
+
+			int temp = _array[n - 1][k + 1];
+			while (temp > 0) {
+
+				tempSum += pow(base, temp);
+				temp--;
+			}
+
+			product *= tempSum;
+			tempSum = 1;
+			k += 2;
+			base = _array[n - 1][k];
+		}
+
+		product -= n;
+
+	}
+	else {
+
+		product = 1;
+
+	}
+
+	_sumArray[n] = product;
+
+	if (product < n) {
+
+		if (_sumArray[product] == n) {
+
+			cout << _count << " : " << product << " and " << n << " are amicable pairs!" << endl;
+			_count++;
+
+		}
+	}
+	
+	
+	//cout << "Sum for " << n << " is " << product << endl;
+
+
+}
