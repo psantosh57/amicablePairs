@@ -31,7 +31,7 @@ Only knowledge required to solve this problem is to
 compute factor and resuse computed factors.
 -----------------------------------------------------------------*/
 int main() {
-#if 0
+#if 1
 	clock_t start = clock();
 	unsigned int n = 10000000;
 	amicable a(n);
@@ -83,8 +83,9 @@ int main() {
 	cout << "Run time for amicable for n = " << 10000000 << " is " << d << " secs" << endl;
 
 #endif // 0
-	int n = 10000000;
-	amicable ami(n);
+	//int n = 10000000;
+	//amicable ami(n);
+#if 0
 	for (int i = 2; i < 10000000; i++) {
 		//cout << i << endl;
 		if (i == 35) {
@@ -92,9 +93,11 @@ int main() {
 			//cout << "Wait" << endl;
 
 		}
-		
+
 		ami.generateFactors(i);
 	}
+#endif // 0
+
 	
 
 

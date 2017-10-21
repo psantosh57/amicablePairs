@@ -13,33 +13,22 @@ public:
 
 	amicable(int limit) : _array(limit), _sumArray(nullptr), _tempArray(nullptr), _primeArray(nullptr), _limit(limit), _count(0) {
 
-		if (_display) {
-
-			cout << "In amicPr const" << endl;
-		}
-
 		_sumArray = new int[_limit];
 		_tempArray = new bool [_limit];
 		_primeArray = new int[_limit];
 
 		calcPrimes();
 		fillPrimeArray();
-		//strikeOutMultiples(limit);
 		
-		//cout << _primeArray[0];
-		
+		init();
 
 	}
 
 	~amicable() {
 
-		if (_display) {
-
-			cout << "In amicPr dest" << endl;
-		}
-
 		delete[] _tempArray;
-		//delete[] _sumArray;
+		delete[] _sumArray;
+		delete[] _primeArray;
 	}
 	
 	void populateArray(int n);
@@ -52,9 +41,9 @@ public:
 	void calcPrimes();
 	void strikeOutMultiples(int n);
 	void fillPrimeArray();
+	void init();
 
-
-
+	
 private :
 
 	darray <darray<int>> _array;

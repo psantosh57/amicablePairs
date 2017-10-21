@@ -434,7 +434,7 @@ void amicable::generateFactors(int n) {
 						if (div == _primeArray[fact]) {
 
 							_array[n - 1][j++] = 2;
-							//tempSum += pow(fact, 2);
+							//newSum += pow(_primeArray[fact], 2);
 							break;
 
 						}
@@ -452,8 +452,6 @@ void amicable::generateFactors(int n) {
 									_array[n - 1][j++] = _array[div - 1][factInd++];
 
 								}
-
-
 
 							}
 
@@ -555,6 +553,14 @@ void amicable::generateFactors(int n) {
 
 		}
 
+	}
+
+}
+
+void amicable::init() {
+
+	for (int i = 2; i < _limit; i++) {
+		generateFactors(i);
 	}
 
 }
