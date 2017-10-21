@@ -380,17 +380,15 @@ void amicable::fillPrimeArray() {
 
 	int i = 0;
 	int k = 0;
+	_primeArray[k++] = -1;
+	_primeArray[k++] = -1;
 	while (i < _limit) {
 
 		if (_tempArray[i]) {
 
-			_primeArray[k++] = true;
+			_primeArray[k++] = i;
 		}
-		else {
-
-			_primeArray[k++] = false;
-
-		}
+		
 		i++;
 
 	}
@@ -413,30 +411,34 @@ void amicable::generateFactors(int n) {
 			int fact = 2;
 			//int j = 1;
 			int m = n;
-			int mod = m % fact;
-			int div = m / fact;
+			//int mod = m % fact;
+			//int div = m / fact;
+			int mod = m % _primeArray[fact];
+			int div = m / _primeArray[fact];
 
-			while (fact <= sqrt(m)) {
+			//Changing fact to _primeArray[fact]
+			while (_primeArray[fact] <= sqrt(m)) {
 
-				if (_tempArray[fact]) {
+				if (_tempArray[_primeArray[fact]]) {
 
-					//mod = m % _primeArray[primeInd];
-					//div = m / _primeArray[primeInd];
-					mod = m % fact;
-					div = m / fact;
+					mod = m % _primeArray[fact];
+					div = m / _primeArray[fact];
+					//mod = m % fact;
+					//div = m / fact;
 					int factInd = 1;
 					if (mod == 0 && div != 1) {
 
-						_array[n - 1][j++] = fact;
+						//_array[n - 1][j++] = fact;
+						_array[n - 1][j++] = _primeArray[fact];
 						//_array[n - 1][j++] = 1;
-						if (div == fact) {
+						if (div == _primeArray[fact]) {
 
 							_array[n - 1][j++] = 2;
 							//tempSum += pow(fact, 2);
 							break;
 
 						}
-						else if (div % fact == 0) {
+						else if (div % _primeArray[fact] == 0) {
 							factInd++;
 							while (_array[div - 1][factInd] != 0) {
 
