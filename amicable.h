@@ -11,7 +11,7 @@ class amicable {
 
 public:
 
-	amicable(int limit) : _array(limit), _sumArray(nullptr), _tempArray(nullptr), _limit(limit), _count(0) {
+	amicable(int limit) : _array(limit), _sumArray(nullptr), _tempArray(nullptr), _primeArray(nullptr), _limit(limit), _count(0) {
 
 		if (_display) {
 
@@ -20,9 +20,10 @@ public:
 
 		_sumArray = new int[_limit];
 		_tempArray = new bool [_limit];
+		_primeArray = new int[_limit];
 
 		calcPrimes();
-		//fillPrimeArray();
+		fillPrimeArray();
 		//strikeOutMultiples(limit);
 		
 		//cout << _primeArray[0];
@@ -59,7 +60,7 @@ private :
 	darray <darray<int>> _array;
 	int* _sumArray;
 	bool* _tempArray;
-	//darray<bool> _primeArray;
+	int* _primeArray;
 	int _limit;
 	static bool _display;
 	int _count;

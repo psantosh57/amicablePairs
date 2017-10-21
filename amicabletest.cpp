@@ -87,7 +87,7 @@ int main() {
 	amicable ami(n);
 	for (int i = 2; i < 10000000; i++) {
 		//cout << i << endl;
-		if (i == 284) {
+		if (i == 2) {
 
 			cout << "Wait" << endl;
 
