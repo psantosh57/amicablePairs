@@ -31,13 +31,7 @@ public:
 		delete[] _primeArray;
 	}
 	
-	void populateArray(int n);
-	int populateArray1(int n);
 	void generateFactors(int n);
-	void displayArray(int row, int col);
-	bool ifPresent(int index, int limit, int n);
-	int addFactors(int n);
-	void verifySums(int n);
 	void calcPrimes();
 	void strikeOutMultiples(int n);
 	void fillPrimeArray();
